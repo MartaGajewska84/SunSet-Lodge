@@ -1,8 +1,8 @@
+import CabinTable from "../features/cabins/CabinTable"
+
 function Cabins() {
   return (
-    <div>
-      Cabins
-    </div>
+    <CabinTable/>
   )
 }
 

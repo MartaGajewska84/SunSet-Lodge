@@ -13,9 +13,13 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.18",
+    "@supabase/supabase-js": "^2.38.5",
+    "@tanstack/react-query-devtools": "^5.8.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
+    "react-query": "^3.39.3",
     "react-router": "^6.19.0",
     "react-router-dom": "^6.19.0"
   },
