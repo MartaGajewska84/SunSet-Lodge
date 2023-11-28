@@ -1,9 +1,7 @@
-import CabinTable from "../features/cabins/CabinTable"
+import CabinTable from '../features/cabins/CabinTable';
 
 function Cabins() {
-  return (
-    <CabinTable/>
-  )
+  return <CabinTable />;
 }
 
-export default Cabins
+export default Cabins;

@@ -2,11 +2,14 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Box from '@mui/system/Box';
 import { formatCurrency } from '../../utils/helpers';
-import EditModal from '../../ui/EditModal';
-import DeleteModal from '../../ui/deleteModal';
+import EditModal from './EditCabinModal';
+import DeleteModal from './DeleteCabinModal';
+import { useDeleteCabin } from './useDeleteCabin';
 
 function SingleCabinRow({ cabin }) {
+  const { deleteCabin } = useDeleteCabin();
   const {
+    id: cabinId,
     name,
     maxCapacity,
     regularPrice,
@@ -37,7 +40,7 @@ function SingleCabinRow({ cabin }) {
       )}
       <TableCell>
         <EditModal/>
-        <DeleteModal/>
+        <DeleteModal deleteCabin={() => deleteCabin(cabinId)}/>
       </TableCell>
     </TableRow>
   );

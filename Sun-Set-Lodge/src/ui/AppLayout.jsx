@@ -7,14 +7,16 @@ import Sidebar from './Sidebar';
 function AppLayout() {
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid xs={2}>
+      <Grid container spacing={3}>
+        <Grid xs="auto" item>
           <Sidebar />
         </Grid>
-        <Stack xs={10}>
-          <Header />
-          <Outlet />
-        </Stack>
+        <Grid xs={10} item>
+          <Stack spacing={3} justifyContent="center" alignItems="center">
+            <Header />
+            <Outlet />
+          </Stack>
+        </Grid>
       </Grid>
     </>
   );

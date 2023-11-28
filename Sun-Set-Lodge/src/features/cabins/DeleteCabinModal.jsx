@@ -23,10 +23,12 @@ const style = {
   p: 4,
 };
 
-function DeleteModal() {
+function DeleteModal({deleteCabin}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  
 
   return (
     <div>
@@ -55,9 +57,11 @@ function DeleteModal() {
               Are you sure you want to delete this cabin permanently? This
               action cannot be undone.
             </Typography>
-            <Stack spacing={2} direction="row" justifyContent= 'flex-end'>
-              <Button variant="outlined">Cancel</Button>
-              <Button variant="contained" color="error">
+            <Stack spacing={2} direction="row" justifyContent="flex-end">
+              <Button variant="outlined" onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button variant="contained" color="error" onClick={deleteCabin}>
                 Delete
               </Button>
             </Stack>
