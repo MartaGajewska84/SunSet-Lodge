@@ -8,11 +8,11 @@ function AppLayout() {
   return (
     <>
       <Grid container spacing={3}>
-        <Grid xs="auto" item>
+        <Grid xs="auto" item="true">
           <Sidebar />
         </Grid>
-        <Grid xs={10} item>
-          <Stack spacing={3} justifyContent="center" alignItems="center">
+        <Grid xs={10} item="true">
+          <Stack spacing={3}>
             <Header />
             <Outlet />
           </Stack>
