@@ -1,4 +1,3 @@
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,13 +8,24 @@ import Paper from '@mui/material/Paper';
 
 import SingleCabinRow from './SingleCabinRow';
 import Spinner from '../../ui/Spinner';
+import { useSearchParams } from 'react-router-dom';
+
 
 import { useCabins } from './useCabins';
 
 function CabinTable() {
   const { isLoading, cabins } = useCabins();
+  const [searchParams] = useSearchParams();
   
   if (isLoading) return <Spinner />;
+
+  const filterValue = searchParams.get('discount') || 'all';
+  let filteredCabins;
+  if (filterValue === 'all') filteredCabins = cabins;
+  if (filterValue === 'no-discount')
+    filteredCabins = cabins.filter((cabin) => cabin.discount === 0);
+  if (filterValue === 'with-discount')
+    filteredCabins = cabins.filter((cabin) => cabin.discount > 0);
 
   return (
     
@@ -32,7 +42,7 @@ function CabinTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {cabins.map((cabin) => (
+            {filteredCabins.map((cabin) => (
               <SingleCabinRow key={cabin.id} cabin={cabin} />
             ))}
           </TableBody>

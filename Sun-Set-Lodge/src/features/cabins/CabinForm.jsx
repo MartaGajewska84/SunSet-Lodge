@@ -1,6 +1,7 @@
 import { useForm, Controller } from 'react-hook-form';
-import { Stack, Button, Box, TextField, InputAdornment } from '@mui/material';
+import { Stack, Button, Box, TextField, InputAdornment, IconButton } from '@mui/material';
 import { HiXMark } from 'react-icons/hi2';
+import { FaCloudUploadAlt } from 'react-icons/fa';
 
 import { useCreateCabin } from './useCreateCabin';
 import { useEditCabin } from './useEditCabin';
@@ -13,16 +14,18 @@ function CabinForm({ close, cabinToEdit = {} }) {
 
   const isEditSession = Boolean(editId);
 
-  const { register, handleSubmit, reset, getValues, control, formState } = useForm({
-    defaultValues: isEditSession ? editValues : {},
-  });
+  const { register, handleSubmit, reset, getValues, control, formState } =
+    useForm({
+      defaultValues: isEditSession ? editValues : {},
+    });
 
   const { errors } = formState;
-  
+  const fileUploadError = errors.image
+
   function onSubmit(data) {
     console.log(data);
     const image = typeof data.image === 'string' ? data.image : data.image[0];
-    console.log(image)
+    console.log(image);
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image }, id: editId },
@@ -43,7 +46,6 @@ function CabinForm({ close, cabinToEdit = {} }) {
           },
         }
       );
-      
   }
 
   function onError(errors) {
@@ -53,34 +55,27 @@ function CabinForm({ close, cabinToEdit = {} }) {
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>
       <Box display="flex" justifyContent="flex-end">
-        <Button onClick={close}>
+        <IconButton onClick={close}>
           <HiXMark style={{ width: '1.5rem', height: '1.5rem' }} />
-        </Button>
+        </IconButton>
       </Box>
       <Box sx={{ width: '75%' }}>
         <Stack spacing={2}>
           <Controller
-            render={({ field }) =>
-              errors?.name?.message ? (
-                <TextField
-                  error
-                  id="name"
-                  helperText="Please enter cabin name"
-                  variant="outlined"
-                />
-              ) : (
-                <TextField
-                  {...field}
-                  
-                  id="name"
-                  label="Cabin name"
-                  variant="outlined"
-                  {...register('name', {
-                    required: 'This field is required',
-                  })}
-                />
-              )
-            }
+            render={({ field }) => (
+              <TextField
+                {...field}
+                defaultValue=""
+                id="name"
+                label="Cabin name"
+                variant="outlined"
+                {...register('name', {
+                  required: 'Please enter cabin name',
+                })}
+                error={!!errors.name}
+                helperText={errors.name?.message}
+              />
+            )}
             name="name"
             control={control}
           />
@@ -88,6 +83,9 @@ function CabinForm({ close, cabinToEdit = {} }) {
             render={({ field }) => (
               <TextField
                 {...field}
+                error={!!errors.maxCapacity}
+                helperText={errors.maxCapacity?.message}
+                defaultValue={1}
                 id="maxCapacity"
                 label="Maximum capacity"
                 type="number"
@@ -108,6 +106,9 @@ function CabinForm({ close, cabinToEdit = {} }) {
             render={({ field }) => (
               <TextField
                 {...field}
+                error={!!errors.regularPrice}
+                helperText={errors.regularPrice?.message}
+                defaultValue={1}
                 id="regularPrice"
                 label="Regular price"
                 type="number"
@@ -134,6 +135,9 @@ function CabinForm({ close, cabinToEdit = {} }) {
             render={({ field }) => (
               <TextField
                 {...field}
+                error={!!errors.discount}
+                helperText={errors.discount?.message}
+                defaultValue={0}
                 id="discount"
                 label="Discount"
                 type="number"
@@ -159,6 +163,9 @@ function CabinForm({ close, cabinToEdit = {} }) {
             render={({ field }) => (
               <TextField
                 {...field}
+                error={!!errors.description}
+                helperText={errors.description?.message}
+                defaultValue=""
                 id="description"
                 label="Description"
                 multiline
@@ -179,7 +186,8 @@ function CabinForm({ close, cabinToEdit = {} }) {
         <Box>
           <input
             accept="image/*"
-            // style={{ display: 'none' }}
+            defaultValue=""
+            style={{ display: 'none' }}
             id="image"
             multiple
             type="file"
@@ -188,9 +196,25 @@ function CabinForm({ close, cabinToEdit = {} }) {
             })}
           />
           <label htmlFor="image">
-            <Button color="primary" variant="contained" component="span">
-              Upload cabin photo
-            </Button>
+            {fileUploadError ? (
+              <Button
+                color="error"
+                variant="contained"
+                component="span"
+                
+              >
+                Upload cabin photo
+              </Button>
+            ) : (
+              <Button
+                color="primary"
+                variant="contained"
+                component="span"
+                startIcon={<FaCloudUploadAlt />}
+              >
+                Upload cabin photo
+              </Button>
+            )}
           </label>
         </Box>
         <Box display="flex" gap="15px">

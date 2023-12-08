@@ -36,11 +36,13 @@ function SingleCabinRow({ cabin }) {
       {discount ? (
         <TableCell>{formatCurrency(discount)}</TableCell>
       ) : (
-        <span>&mdash</span>
+        <TableCell style={{ fontWeight: 600 }}>&mdash;</TableCell>
       )}
       <TableCell>
-        <EditCabinModal cabinToEdit={cabin}/>
-        <DeleteModal deleteCabin={() => deleteCabin(cabinId)} />
+        <Box sx={{ display: 'flex', gap: 4 }}>
+          <EditCabinModal cabinToEdit={cabin} />
+          <DeleteModal deleteCabin={() => deleteCabin(cabinId)} />
+        </Box>
       </TableCell>
     </TableRow>
   );

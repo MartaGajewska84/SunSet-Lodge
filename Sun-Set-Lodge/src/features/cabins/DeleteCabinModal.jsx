@@ -7,6 +7,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
 
 import { HiTrash } from 'react-icons/hi2';
 
@@ -32,9 +33,9 @@ function DeleteModal({deleteCabin}) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>
-        <HiTrash />
-      </Button>
+      <IconButton onClick={handleOpen}>
+        <HiTrash fontSize="medium" />
+      </IconButton>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

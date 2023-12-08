@@ -3,7 +3,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
-import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 
 
 import { HiPencil } from 'react-icons/hi2';
@@ -30,9 +30,9 @@ function EditCabinModal({cabinToEdit}) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>
-        <HiPencil />
-      </Button>
+      <IconButton onClick={handleOpen}>
+        <HiPencil fontSize="medium" />
+      </IconButton>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -48,7 +48,7 @@ function EditCabinModal({cabinToEdit}) {
       >
         <Fade in={open}>
           <Box sx={style}>
-            <CabinForm close={handleClose} cabinToEdit={cabinToEdit}/>
+            <CabinForm close={handleClose} cabinToEdit={cabinToEdit} />
           </Box>
         </Fade>
       </Modal>
