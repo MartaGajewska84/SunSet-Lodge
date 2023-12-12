@@ -4,7 +4,7 @@ import { Box, Button } from '@mui/material';
 function Filter({ filterField, options }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentFilter = searchParams.get(filterField) || options.at(0).value;
-  console.log(currentFilter)
+  
 
   function handleClick(value) {
     searchParams.set(filterField, value);
@@ -12,7 +12,7 @@ function Filter({ filterField, options }) {
   }
 
   return (
-    <Box display="flex" justifyContent="flex-end" gap={3}>
+    <Box display="flex"  gap={2}>
       {options.map((option) => (
         <Button
           key={option.value}
