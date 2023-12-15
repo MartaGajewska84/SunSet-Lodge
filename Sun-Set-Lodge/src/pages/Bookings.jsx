@@ -1,9 +1,22 @@
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import BookingTable from '../features/bookings/BookingTable';
+import BookingTableOperations from '../features/bookings/BookingTableOperations';
+
 function Bookings() {
   return (
     <div>
-      Bookings
+      <Box display="flex" marginBottom="1.5rem">
+        <Typography variant="h5" component="h1" width="80%"  gutterBottom>
+          All Bookings
+        </Typography>
+        <Box width="100%" display="flex" justifyContent="flex-end">
+          <BookingTableOperations />
+        </Box>
+      </Box>
+      <BookingTable />
     </div>
-  )
+  );
 }
 
-export default Bookings
+export default Bookings;
