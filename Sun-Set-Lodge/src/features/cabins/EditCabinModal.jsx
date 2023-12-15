@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import IconButton from '@mui/material/IconButton';
-
+import Tooltip from '@mui/material/Tooltip';
 
 import { HiPencil } from 'react-icons/hi2';
 
@@ -15,7 +15,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "50%",
+  width: '50%',
   bgcolor: 'background.paper',
   border: '2px solid #edeff0',
   borderRadius: '5px',
@@ -23,16 +23,18 @@ const style = {
   p: 4,
 };
 
-function EditCabinModal({cabinToEdit}) {
+function EditCabinModal({ cabinToEdit }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <IconButton onClick={handleOpen}>
-        <HiPencil fontSize="medium" />
-      </IconButton>
+      <Tooltip title="edit">
+        <IconButton onClick={handleOpen}>
+          <HiPencil fontSize="medium" />
+        </IconButton>
+      </Tooltip>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -56,4 +58,4 @@ function EditCabinModal({cabinToEdit}) {
   );
 }
 
-export default EditCabinModal
+export default EditCabinModal;

@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 import { HiTrash } from 'react-icons/hi2';
 
@@ -24,18 +25,18 @@ const style = {
   p: 4,
 };
 
-function DeleteModal({deleteCabin}) {
+function DeleteModal({ deleteCabin }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  
-
   return (
     <div>
-      <IconButton onClick={handleOpen}>
-        <HiTrash fontSize="medium" />
-      </IconButton>
+      <Tooltip title="delete">
+        <IconButton onClick={handleOpen}>
+          <HiTrash fontSize="medium" />
+        </IconButton>
+      </Tooltip>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
