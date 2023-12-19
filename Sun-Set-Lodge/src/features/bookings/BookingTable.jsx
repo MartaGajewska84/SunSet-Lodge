@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useBookings } from './useBookings';
 
-import usePagination from '../../utils/usePagination';
+import usePagination from '../../hooks/usePagination';
 import { PAGE_SIZE } from '../../utils/constants';
 
 import SingleBookingRow from './SingleBookingRow';
@@ -42,6 +42,7 @@ function BookingTable() {
                 <TableCell>DATES</TableCell>
                 <TableCell>STATUS</TableCell>
                 <TableCell>AMOUNT</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
