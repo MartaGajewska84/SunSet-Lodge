@@ -3,12 +3,13 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import BookingDataBox from './BookingData';
+import BookingData from './SingleBookingData';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
 
 import { useMoveBack } from '../../hooks/useMoveBack';
 import { useBooking } from './useBooking';
 
-function BookingDetail() {
+function SingleBookingDetail() {
   const { booking, isLoading } = useBooking();
 
   const moveBack = useMoveBack();
@@ -27,7 +28,7 @@ function BookingDetail() {
       <Stack
         direction="row"
         justifyContent="space-between"
-        justifyItems = 'baseline'
+        justifyItems="baseline"
       >
         <Stack direction="row" gap={4}>
           <Typography variant="h5" component="h1" width="60%" gutterBottom>
@@ -40,13 +41,18 @@ function BookingDetail() {
           />
         </Stack>
         <Stack>
-          <Button onClick={moveBack}>&larr; Back</Button>
+          <Button
+            variant="outlined"
+            startIcon={<FaLongArrowAltLeft />}
+            onClick={moveBack}
+          >
+          Back
+          </Button>
         </Stack>
       </Stack>
-      <BookingDataBox booking={booking} />
-
-      <Stack>
-        <Button variation="secondary" onClick={moveBack}>
+      <BookingData booking={booking} />
+      <Stack width="10%">
+        <Button variant="contained" onClick={moveBack}>
           Back
         </Button>
       </Stack>
@@ -54,4 +60,4 @@ function BookingDetail() {
   );
 }
 
-export default BookingDetail;
+export default SingleBookingDetail;

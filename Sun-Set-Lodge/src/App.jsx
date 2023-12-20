@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Toaster } from 'react-hot-toast';
 import { createTheme, ThemeProvider } from '@mui/material';
-import { grey } from '@mui/material/colors';
+import { grey, green } from '@mui/material/colors';
+
 
 import AppLayout from './ui/AppLayout';
 import Bookings from './pages/Bookings';
@@ -18,6 +19,9 @@ const theme = createTheme({
   palette: {
     info: {
       main: grey[400],
+    },
+    success: {
+      main: green[200]
     },
   }
 });
