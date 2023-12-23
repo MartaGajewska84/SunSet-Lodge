@@ -14,6 +14,7 @@ function SortBy({ options }) {
       options={options}
       onChange={handleChange}
       value={sortBy}
+      
     />
   );
 }
