@@ -17,7 +17,7 @@ import SingleBookingRow from './SingleBookingRow';
 import Spinner from '../../ui/Spinner';
 
 function BookingTable() {
-  let [page, setPage] = useState(1);
+  const [page, setPage] = useState(1);
   const { bookings = [], isLoading } = useBookings();
 
   const count = Math.ceil(bookings.length / PAGE_SIZE);
@@ -27,6 +27,8 @@ function BookingTable() {
     setPage(p);
     _DATA.jump(p);
   };
+
+  console.log(page) //page jest odpowiedzialna za stronę paginacji
 
   if (isLoading) return <Spinner />;
 

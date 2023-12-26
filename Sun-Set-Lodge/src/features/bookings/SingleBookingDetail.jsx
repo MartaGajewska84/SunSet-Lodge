@@ -3,12 +3,13 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
-import SingleBookingData from './SingleBookingData';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
+import SingleBookingData from './SingleBookingData';
 
+import { useNavigate } from 'react-router';
 import { useMoveBack } from '../../hooks/useMoveBack';
 import { useBooking } from './useBooking';
-import { useNavigate } from 'react-router';
+import { useCheckout } from '../check-in-out/useCheckOut';
 
 function SingleBookingDetail() {
   const { booking, isLoading } = useBooking();
@@ -16,6 +17,8 @@ function SingleBookingDetail() {
   const navigate = useNavigate();
 
   const moveBack = useMoveBack();
+
+  const { checkout } = useCheckout();
 
   if (isLoading) return <Spinner />;
   const { status, id: bookingId } = booking;
@@ -68,6 +71,11 @@ function SingleBookingDetail() {
             onClick={() => navigate(`/checkin/${bookingId}`)}
           >
             Check in
+          </Button>
+        )}
+        {status === 'checked-in' && (
+          <Button variant="contained" onClick={() => checkout(bookingId)}>
+            Check out
           </Button>
         )}
       </Stack>

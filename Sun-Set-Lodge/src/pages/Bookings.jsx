@@ -1,3 +1,4 @@
+
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -5,6 +6,7 @@ import BookingTable from '../features/bookings/BookingTable';
 import BookingTableOperations from '../features/bookings/BookingTableOperations';
 
 function Bookings() {
+  
   return (
     <div>
       <Box display="flex" marginBottom="1.5rem">

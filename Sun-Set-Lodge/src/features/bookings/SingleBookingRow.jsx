@@ -7,9 +7,10 @@ import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import { HiArrowDownOnSquare, HiEye } from 'react-icons/hi2';
+import { HiArrowDownOnSquare,HiArrowUpOnSquare, HiEye } from 'react-icons/hi2';
 import { formatCurrency } from '../../utils/helpers';
 import { formatDistanceFromNow } from '../../utils/helpers';
+import { useCheckout } from '../check-in-out/useCheckOut';
 
 function SingleBookingRow({
   booking: {
@@ -26,6 +27,8 @@ function SingleBookingRow({
   },
 }) {
   const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
+
 
   const statusToTagName = {
     unconfirmed: 'primary',
@@ -77,6 +80,16 @@ function SingleBookingRow({
             <Tooltip title="check-in">
               <IconButton onClick={() => navigate(`/checkin/${bookingId}`)}>
                 <HiArrowDownOnSquare fontSize="medium" />
+              </IconButton>
+            </Tooltip>
+          )}
+          {status === 'checked-in' && (
+            <Tooltip title="check-out">
+              <IconButton
+                onClick={() => checkout(bookingId)}
+                disabled={isCheckingOut}
+              >
+                <HiArrowUpOnSquare fontSize="medium" />
               </IconButton>
             </Tooltip>
           )}
