@@ -3,7 +3,7 @@ import TableRow from '@mui/material/TableRow';
 import Box from '@mui/system/Box';
 import { formatCurrency } from '../../utils/helpers';
 import EditCabinModal from './EditCabinModal';
-import DeleteModal from './DeleteCabinModal';
+import DeleteModal from '../../ui/DeleteModal';
 import { useDeleteCabin } from './useDeleteCabin';
 
 function SingleCabinRow({ cabin }) {
@@ -41,7 +41,7 @@ function SingleCabinRow({ cabin }) {
       <TableCell>
         <Box sx={{ display: 'flex', gap: 4 }}>
           <EditCabinModal cabinToEdit={cabin} />
-          <DeleteModal deleteCabin={() => deleteCabin(cabinId)} />
+          <DeleteModal deleteFunction={() => deleteCabin(cabinId)} name="cabin"/>
         </Box>
       </TableCell>
     </TableRow>

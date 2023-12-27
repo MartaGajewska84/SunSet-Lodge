@@ -5,14 +5,17 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 import SingleBookingData from './SingleBookingData';
+import DeleteModal from '../../ui/DeleteModal';
 
 import { useNavigate } from 'react-router';
 import { useMoveBack } from '../../hooks/useMoveBack';
 import { useBooking } from './useBooking';
 import { useCheckout } from '../check-in-out/useCheckOut';
+import { useDeleteBooking } from './useDeleteBooking';
 
 function SingleBookingDetail() {
   const { booking, isLoading } = useBooking();
+  const { deleteBooking } = useDeleteBooking();
 
   const navigate = useNavigate();
 
@@ -57,27 +60,39 @@ function SingleBookingDetail() {
         </Stack>
       </Stack>
       <SingleBookingData booking={booking} />
-      <Stack direction="row" gap={2}>
-        <Button
-          variant="contained"
-          startIcon={<FaLongArrowAltLeft />}
-          onClick={moveBack}
-        >
-          Back
-        </Button>
-        {status === 'unconfirmed' && (
+
+      <Stack direction="row" justifyContent="space-between">
+        <Stack direction="row" gap={2}>
           <Button
             variant="contained"
-            onClick={() => navigate(`/checkin/${bookingId}`)}
+            startIcon={<FaLongArrowAltLeft />}
+            onClick={moveBack}
           >
-            Check in
+            Back
           </Button>
-        )}
-        {status === 'checked-in' && (
-          <Button variant="contained" onClick={() => checkout(bookingId)}>
-            Check out
-          </Button>
-        )}
+          {status === 'unconfirmed' && (
+            <Button
+              variant="contained"
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+            >
+              Check in
+            </Button>
+          )}
+          {status === 'checked-in' && (
+            <Button variant="contained" onClick={() => checkout(bookingId)}>
+              Check out
+            </Button>
+          )}
+        </Stack>
+        {/* delete button */}
+        <DeleteModal
+          deleteFunction={() =>
+            deleteBooking(bookingId, {
+              onSettled: () => navigate(-1),
+            })
+          }
+          name="booking"
+        />
       </Stack>
     </>
   );

@@ -25,7 +25,7 @@ const style = {
   p: 4,
 };
 
-function DeleteModal({ deleteCabin }) {
+function DeleteModal({ deleteFunction, name }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -53,17 +53,17 @@ function DeleteModal({ deleteCabin }) {
         <Fade in={open}>
           <Box sx={style}>
             <Typography id="transition-modal-title" variant="h6" component="h2">
-              Delete cabin
+              Delete {name}
             </Typography>
             <Typography id="transition-modal-description" sx={{ mt: 2, mb: 3 }}>
-              Are you sure you want to delete this cabin permanently? This
+              Are you sure you want to delete this {name} permanently? This
               action cannot be undone.
             </Typography>
             <Stack spacing={2} direction="row" justifyContent="flex-end">
               <Button variant="outlined" onClick={handleClose}>
                 Cancel
               </Button>
-              <Button variant="contained" color="error" onClick={deleteCabin}>
+              <Button variant="contained" color="error" onClick={deleteFunction}>
                 Delete
               </Button>
             </Stack>
