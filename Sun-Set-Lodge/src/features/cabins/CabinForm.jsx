@@ -23,9 +23,9 @@ function CabinForm({ close, cabinToEdit = {} }) {
   const fileUploadError = errors.image
 
   function onSubmit(data) {
-    console.log(data);
+    //console.log(data);
     const image = typeof data.image === 'string' ? data.image : data.image[0];
-    console.log(image);
+    //console.log(image);
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image }, id: editId },

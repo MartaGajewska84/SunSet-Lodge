@@ -15,6 +15,7 @@ import Settings from './pages/Settings';
 import Users from './pages/Users';
 import Booking from './pages/Booking';
 import Checkin from './pages/Checkin';
+import Login from './pages/Login';
 
 const theme = createTheme({
   palette: {
@@ -52,6 +53,7 @@ function App() {
               <Route path="users" element={<Users />} />
               <Route path="settings" element={<Settings />} />
             </Route>
+            <Route path="login" element={<Login />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
@@ -71,8 +73,8 @@ function App() {
             fontSize: '16px',
             maxWidth: '500px',
             padding: '16px',
-            backgroundColor: 'var(--color-grey-0)',
-            color: 'var(--color-grey-700)',
+            backgroundColor: 'white',
+            
           },
         }}
       />

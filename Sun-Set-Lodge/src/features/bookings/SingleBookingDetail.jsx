@@ -84,7 +84,7 @@ function SingleBookingDetail() {
             </Button>
           )}
         </Stack>
-        {/* delete button */}
+
         <DeleteModal
           deleteFunction={() =>
             deleteBooking(bookingId, {
