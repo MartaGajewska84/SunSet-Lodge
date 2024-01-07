@@ -5,7 +5,7 @@ import Logo from '../ui/Logo';
 
 function Login() {
   return (
-    <Stack direction="column" alignItems="center">
+    <Stack direction="column" alignItems="center" height="100vh">
       <Logo />
       <Typography variant="h6" m="1.5rem">
         Log in to your account

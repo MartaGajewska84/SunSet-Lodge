@@ -4,7 +4,7 @@ import SignupForm from '../features/authentication/SignupForm';
 
 function Users() {
   return (
-    <Stack direction="column" alignItems="center">
+    <Stack direction="column" alignItems="center" height="100vh">
       <Typography variant="h5" mb="1.5rem">
         Create a new user
       </Typography>
