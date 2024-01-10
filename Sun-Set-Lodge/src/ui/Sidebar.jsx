@@ -5,9 +5,9 @@ function Sidebar() {
   return (
     <>
       <Logo />
-      <MainNav/>
+      <MainNav />
     </>
   );
 }
 
-export default Sidebar
+export default Sidebar;
