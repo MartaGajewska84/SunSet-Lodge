@@ -1,5 +1,12 @@
 import { useForm, Controller } from 'react-hook-form';
-import { Stack, Button, Box, TextField, InputAdornment, IconButton } from '@mui/material';
+import {
+  Stack,
+  Button,
+  Box,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from '@mui/material';
 import { HiXMark } from 'react-icons/hi2';
 import { FaCloudUploadAlt } from 'react-icons/fa';
 
@@ -8,7 +15,7 @@ import { useEditCabin } from './useEditCabin';
 
 function CabinForm({ close, cabinToEdit = {} }) {
   const { id: editId, ...editValues } = cabinToEdit;
-  //console.log(editId, editValues);
+
   const { createCabin } = useCreateCabin();
   const { editCabin } = useEditCabin();
 
@@ -20,12 +27,11 @@ function CabinForm({ close, cabinToEdit = {} }) {
     });
 
   const { errors } = formState;
-  const fileUploadError = errors.image
+  const fileUploadError = errors.image;
 
   function onSubmit(data) {
-    //console.log(data);
     const image = typeof data.image === 'string' ? data.image : data.image[0];
-    //console.log(image);
+
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image }, id: editId },
@@ -197,12 +203,7 @@ function CabinForm({ close, cabinToEdit = {} }) {
           />
           <label htmlFor="image">
             {fileUploadError ? (
-              <Button
-                color="error"
-                variant="contained"
-                component="span"
-                
-              >
+              <Button color="error" variant="contained" component="span">
                 Upload cabin photo
               </Button>
             ) : (

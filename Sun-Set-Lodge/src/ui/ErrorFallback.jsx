@@ -3,10 +3,9 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router';
+import { FaRegFaceSadTear } from 'react-icons/fa6';
 
-function PageNotFound() {
-  const navigate = useNavigate();
+function ErrorFallback({resetErrorBoundary}) {
   return (
     <Box
       sx={{
@@ -18,16 +17,15 @@ function PageNotFound() {
     >
       <Paper elevation={1} sx={{ width: '70%', p: '2rem' }}>
         <Stack alignItems="center" justifyContent="center" gap={3}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Page not found
+          <FaRegFaceSadTear style={{ width: '2rem', height: '2rem' }} />
+          <Typography variant="h4" component="h1" gutterBottom width="50%">
+            Upps... something went wrong
           </Typography>
-          <Button variant="contained" onClick={() => navigate('/')}>
-            Try again
-          </Button>
+          <Button variant="contained" onClick={resetErrorBoundary}>Try again</Button>
         </Stack>
       </Paper>
     </Box>
   );
 }
 
-export default PageNotFound;
+export default ErrorFallback;

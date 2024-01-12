@@ -14,9 +14,9 @@ import { useSearchParams } from 'react-router-dom';
 import { useCabins } from './useCabins';
 
 function CabinTable() {
-  const { isLoading, cabins } = useCabins();
   const [searchParams] = useSearchParams();
   
+  const { isLoading, cabins } = useCabins();
   if (isLoading) return <Spinner />;
 
   // filter
